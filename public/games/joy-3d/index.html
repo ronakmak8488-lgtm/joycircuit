@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+    <meta name="color-scheme" content="dark" />
+    <title>JoyCircuit 3D</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="game-shell">
+      <header class="topbar">
+        <div class="game-mark" aria-hidden="true">3D</div>
+        <div class="identity">
+          <h1 id="game-title">JoyCircuit 3D</h1>
+          <p id="game-tagline">Preparing your game…</p>
+        </div>
+        <div class="stats" aria-live="polite">
+          <div class="stat"><span id="score-label">Score</span><strong id="score">0</strong></div>
+          <div class="stat stat-objective"><span>Objective</span><strong id="objective">—</strong></div>
+          <div class="stat"><span>Time</span><strong id="time">0:00</strong></div>
+        </div>
+        <div class="toolbar">
+          <button id="pause" type="button" aria-label="Pause game" title="Pause (P)">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14" /></svg>
+          </button>
+          <button id="restart" type="button" aria-label="Restart game" title="Restart">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7v5h-5M19 12a7 7 0 1 0-1.8 4.7" /></svg>
+          </button>
+          <button id="mute" type="button" aria-label="Sound muted" title="Toggle sound">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z" /><path id="sound-wave" d="M15.5 8.5a5 5 0 0 1 0 7" /></svg>
+          </button>
+        </div>
+      </header>
+
+      <main class="stage" id="stage">
+        <div id="webgl-host" aria-label="Interactive 3D game area"></div>
+        <div class="vignette" aria-hidden="true"></div>
+        <div id="reticle" class="reticle" aria-hidden="true"><i></i></div>
+        <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+        <div id="loading" class="loading" role="status" aria-live="polite">
+          <div class="loader-orbit" aria-hidden="true"><i></i><i></i><i></i></div>
+          <strong>Loading the 3D world</strong>
+          <span id="loading-detail">Preparing licensed Kenney models…</span>
+        </div>
+
+        <section id="modal" class="modal hidden" aria-labelledby="modal-title">
+          <div class="modal-card">
+            <div class="modal-icon" id="modal-icon" aria-hidden="true">◆</div>
+            <h2 id="modal-title">Ready?</h2>
+            <p id="modal-copy"></p>
+            <div id="result" class="result hidden">
+              <div><span>Score</span><strong id="final-score">0</strong></div>
+              <div><span>Result</span><strong id="final-result">Ready</strong></div>
+            </div>
+            <button id="primary-action" class="primary" type="button">Start game</button>
+            <p id="control-hint" class="control-hint"></p>
+          </div>
+        </section>
+
+        <div id="touch-controls" class="touch-controls" aria-label="Touch game controls">
+          <div class="dpad">
+            <button type="button" data-key="ArrowUp" aria-label="Move up">↑</button>
+            <button type="button" data-key="ArrowLeft" aria-label="Move left">←</button>
+            <button type="button" data-key="ArrowDown" aria-label="Move down">↓</button>
+            <button type="button" data-key="ArrowRight" aria-label="Move right">→</button>
+          </div>
+          <button id="touch-action" class="touch-action" type="button" aria-label="Action">A</button>
+        </div>
+
+        <noscript>This game requires JavaScript and WebGL.</noscript>
+      </main>
+    </div>
+
+    <script type="module" src="./bundle.js"></script>
+  </body>
+</html>

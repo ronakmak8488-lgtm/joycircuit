@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="theme-color" content="#07111f">
+  <meta name="color-scheme" content="dark">
+  <title>Joy Arcade — JoyCircuit</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main class="arcade-shell" aria-label="JoyCircuit arcade game">
+    <header class="game-bar">
+      <div class="game-identity">
+        <div class="game-mark" id="gameMark" aria-hidden="true">J</div>
+        <div class="game-copy">
+          <h1 id="gameTitle">Joy Arcade</h1>
+          <p id="gameTagline">Loading a fresh circuit…</p>
+        </div>
+      </div>
+
+      <div class="game-stats" aria-live="polite">
+        <div class="game-stat"><span>Score</span><strong id="scoreValue">00000</strong></div>
+        <div class="game-stat"><span>Best</span><strong id="bestValue">00000</strong></div>
+        <div class="game-stat goal-stat"><span>Objective</span><strong id="goalValue">Ready</strong></div>
+      </div>
+
+      <nav class="game-actions" aria-label="Game controls">
+        <button class="icon-button" id="pauseButton" type="button" aria-label="Pause game" title="Pause (P)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg>
+        </button>
+        <button class="icon-button" id="restartButton" type="button" aria-label="Restart game" title="Restart (R)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 9A8 8 0 1 1 5 16.2"/><path d="M4.5 4.5V9H9"/></svg>
+        </button>
+        <button class="icon-button" id="muteButton" type="button" aria-label="Mute game" title="Mute (M)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6.5 9H3v6h3.5l4.5 4V5Z"/><path class="sound-wave" d="M15.5 8.5a5 5 0 0 1 0 7"/></svg>
+        </button>
+      </nav>
+    </header>
+
+    <section class="game-stage" id="gameStage">
+      <canvas id="gameCanvas" aria-label="Interactive HTML5 canvas game"></canvas>
+      <div class="stage-vignette" aria-hidden="true"></div>
+
+      <div class="objective-strip" id="objectiveStrip">
+        <span class="objective-dot" aria-hidden="true"></span>
+        <span id="objectiveText">Preparing game…</span>
+      </div>
+
+      <div class="touch-controls" id="touchControls" aria-label="Touch controls">
+        <div class="direction-controls" id="directionControls">
+          <button type="button" data-control="up" aria-label="Move up">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg>
+          </button>
+          <button type="button" data-control="left" aria-label="Move left">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>
+          </button>
+          <button type="button" data-control="down" aria-label="Move down">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <button type="button" data-control="right" aria-label="Move right">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+          </button>
+        </div>
+        <button class="action-control" id="actionControl" data-control="action" type="button" aria-label="Game action">
+          <span id="actionLabel">GO</span>
+        </button>
+      </div>
+
+      <div class="game-modal" id="gameModal">
+        <div class="modal-card">
+          <div class="modal-emblem" id="modalEmblem" aria-hidden="true">
+            <span></span><i></i><b></b>
+          </div>
+          <h2 id="modalTitle">Loading circuit</h2>
+          <p id="modalCopy">Preparing a playable world.</p>
+          <div class="result-grid" id="resultGrid" hidden>
+            <div><span>Run score</span><strong id="finalScore">0</strong></div>
+            <div><span>Best run</span><strong id="finalBest">0</strong></div>
+          </div>
+          <button class="primary-button" id="primaryButton" type="button">Start game</button>
+          <p class="modal-shortcuts" id="modalShortcuts">P pause · R restart · M mute</p>
+        </div>
+      </div>
+
+      <div class="loading-error" id="loadingError" hidden>
+        <strong>Game unavailable</strong>
+        <span>The arcade manifest could not be loaded.</span>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="./engine.js"></script>
+</body>
+</html>
