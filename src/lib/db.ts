@@ -8,7 +8,9 @@ import { seedGames } from "@/lib/seed-data";
 const configuredDatabasePath = process.env.JOYCIRCUIT_DB_PATH?.trim();
 const databasePath = configuredDatabasePath
   ? path.resolve(configuredDatabasePath)
-  : path.join(process.cwd(), "data", "joycircuit.db");
+  : process.env.VERCEL
+    ? path.join("/tmp", "joycircuit.db")
+    : path.join(process.cwd(), "data", "joycircuit.db");
 const dataDirectory = path.dirname(databasePath);
 
 type GlobalWithJoyCircuitDb = typeof globalThis & {
