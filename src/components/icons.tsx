@@ -37,6 +37,10 @@ export function ArrowRightIcon(props: IconProps) {
   return <IconBase {...props}><path d="M5 12h14m-5-5 5 5-5 5" /></IconBase>;
 }
 
+export function ArrowLeftIcon(props: IconProps) {
+  return <IconBase {...props}><path d="M19 12H5m5 5-5-5 5-5" /></IconBase>;
+}
+
 export function BoltIcon(props: IconProps) {
   return <IconBase {...props}><path d="m13.5 2-8 11h6L10.5 22l8-12h-6l1-8Z" /></IconBase>;
 }

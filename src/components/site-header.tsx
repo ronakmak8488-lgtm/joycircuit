@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { Brand } from "@/components/brand";
-import { CloseIcon, HeartIcon, MenuIcon } from "@/components/icons";
+import { ArrowLeftIcon, CloseIcon, HeartIcon, MenuIcon } from "@/components/icons";
 import { SearchBox } from "@/components/search-box";
 import { SoundscapeControl } from "@/components/soundscape-control";
 
@@ -39,6 +39,9 @@ export function SiteHeader() {
         </nav>
         <SearchBox />
         <div className="header-actions">
+          <Link className="icon-button ronak-motion-button" href="https://ronak-motion.vercel.app" aria-label="Back to Ronak Motion" title="Back to Ronak Motion">
+            <ArrowLeftIcon size={19} />
+          </Link>
           <SoundscapeControl />
           <Link className="icon-button library-button" href="/library" aria-label="Open favorites and recent games"><HeartIcon size={19} /></Link>
           <span className="avatar" aria-label="Guest profile">R</span>
